@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117094943-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-117094943-1');
+</script>
+<title>TextTools - テキスト操作ツール</title>
+<meta name="description" content="テキスト操作ツールです。">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="style.css?201804070024">
+<script src="script.js?201804070024"></script>
+</head>
+
+<nav class="navbar is-link is-fixed-top">
+  <div class="container">
+    <div class="navbar-brand">
+        <h1 class="navbar-item is-large title">TextTools</h1>
+    </div>
+    <div id="nav" class="navbar-start"> <!-- Header --> </div>
+</nav>
+
+<section class="section">
+  <div class="container">
+    <textarea class="textarea"></textarea>
+    <br>
+    <div class="columns">
+      <div class="column"> <p>文字数：0 </div>
+      <div class="column"> <p>行数：0 </div>
+      <div class="column"> <button class="button"><i class="fas fa-fw fa-undo"></i>元に戻す </div>
+      <div class="column"></div>
+    </div>
+    <div class="tabs">
+      <ul>
+        <li class="is-active"><a><i class="fas fa-fw fa-cogs"></i>テキスト操作</a>
+        <li><a><i class="fas fa-fw fa-exchange-alt"></i>エンコード</a>
+        <li><a><i class="fas fa-fw fa-lock"></i>AES</a>
+        <li><a><i class="fas fa-fw fa-hashtag"></i>MD5</a>
+        <li><a><i class="fas fa-fw fa-hashtag"></i>SHA-1</a>
+        <li><a><i class="fas fa-fw fa-hashtag"></i>SHA-2</a>
+        <li><a><i class="fas fa-fw fa-hashtag"></i>SHA-3</a>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="columns is-flex-desktop">
+    <div class="column is-one-quarter" style="padding: 0 0.75rem"></div>
+    <div class="column is-one-quarter">© 2018 shge.github.io</div>
+    <div class="column is-one-quarter">
+      <a href="https://github.com/shge/shge.github.io/issues/new">バグの報告などはこちらから</a>
+    </div>
+  </div>
+</footer>
