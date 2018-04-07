@@ -29,3 +29,7 @@ body{
 .fa-fw {
   margin-right: 0.5rem;
 }
+
+.hidden {
+  display: none;
+}
