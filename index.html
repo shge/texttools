@@ -52,23 +52,52 @@
       </ul>
     </div>
     <div id="tab-contents">
+
       <div>
-        <button class="button">置換</button>
+        <div class="columns">
+          <div class="column"><button class="button">置換</button></div>
+          <div class="column"><input class="input" placeholder="置換前"></div>
+          <div class="column"><input class="input" placeholder="置換後"></div>
+          <div class="column"></div>
+        </div>
+        <hr class="hr">
+        <div class="columns">
+          <div class="column"><button class="button" id="empty-remove">空行削除</button></div>
+          <div class="column"><button class="button" id="newline-remove">改行削除</button></div>
+          <div class="column"><button class="button" id="duplicates-remove">重複行削除(1個残す)</button></div>
+          <div class="column"><button class="button" id="duplicates-removeall">重複行削除(残さない)</button></div>
+        </div>
+        <div class="columns">
+          <div class="column"><button class="button" id="sort-asc">行並び替え(昇順)</button></div>
+          <div class="column"><button class="button" id="sort-desc">行並び替え(降順)</button></div>
+          <div class="column"><button class="button" id="shuffle">行シャッフル</button></div>
+          <div class="column"><button class="button" id=""></button></div>
+        </div>
+
       </div>
+
       <div class="hidden">
         <button class="button">エンコード</button>
       </div>
+
       <div class="hidden">
         <button class="button">暗号化</button>
         <button class="button">復号化</button>
-        <input type="text" class="input" placeholder="パスワード">
+        <input type="password" class="input" placeholder="パスワード">
       </div>
+
       <div class="hidden">
         <button class="button">Hex</button>
         <button class="button">Base64</button>
       </div>
+
     </div>
-  </div>
+    <article class="message is-dark" style="margin-top: 3rem">
+      <div class="message-body content">
+        <p>* ローカル(ご使用の端末)で処理するため、サーバーにデータは<strong>送信されません</strong>。
+      </div>
+    </article>
+  </div> <!-- .container -->
 </section>
 
 <footer class="footer">
@@ -76,7 +105,7 @@
     <div class="column is-one-quarter" style="padding: 0 0.75rem"></div>
     <div class="column is-one-quarter">© 2018 shge.github.io</div>
     <div class="column is-one-quarter">
-      <a href="https://github.com/shge/shge.github.io/issues/new">バグの報告などはこちらから</a>
+      <a href="https://github.com/shge/texttools/issues/new">バグの報告などはこちらから</a>
     </div>
   </div>
 </footer>

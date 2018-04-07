@@ -16,6 +16,7 @@ var gettxt = function () { return $('#input').val(); },
     settxt = function (i) {
       prevtxt = $('#input').val();
       $('#input').val(i);
+      count();
     };
 
 // Undo
@@ -77,5 +78,24 @@ var count = function () {
 
 // テキストの更新時にカウント
 $('#input').on('input', function() { count(); });
+
+//////////////////////////// テキスト操作 ////////////////////////////
+
+$('#duplicates-removeall').on('click', function() {
+  var a = gettxt().split('\n');
+  var b = a.filter(function(x, i, self) {
+    var num = 0;
+    for (var i = 0; i < self.length; i++) {
+      if (self[i] == x) { num++; }
+    }
+    return num === 1;
+  });
+  settxt( (b.join('\n')) );
+});
+
+//////////////////////////// エンコード ////////////////////////////
+
+
+
 
 }); // $
