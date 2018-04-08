@@ -10,13 +10,23 @@
   gtag('js', new Date());
   gtag('config', 'UA-117094943-1');
 </script>
-<title>TextTools - テキスト操作ツール</title>
-<meta name="description" content="テキスト操作ツールです。">
+<title>テキスト操作ツール - TextTools</title>
+<meta name="description" content="文字列置換、空行削除、行並び替え、エンコード、AES暗号化/復号化、MD5/SHAハッシュ値生成、パスワード生成などに対応しているテキスト操作ツールです。">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha224.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha384.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha512.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha3.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/punycode/1.3.1/punycode.min.js"></script>
 
 <link rel="stylesheet" href="style.css?201804070024">
 <script src="script.js?201804070024"></script>
@@ -46,6 +56,7 @@
         <li><a><i class="fas fa-fw fa-exchange-alt"></i>エンコード</a>
         <li><a><i class="fas fa-fw fa-lock"></i>AES</a>
         <li><a><i class="fas fa-fw fa-hashtag"></i>MD5 / SHA</a>
+        <li><a><i class="fas fa-fw fa-key"></i>パスワード生成</a>
       </ul>
     </div>
     <div id="tab-contents">
@@ -78,14 +89,37 @@
       </div>
 
       <div class="hidden">
-        <button class="button">暗号化</button>
-        <button class="button">復号化</button>
-        <input type="password" class="input" placeholder="パスワード">
+        <div class="columns">
+          <div class="column is-one-fifth">
+            <button class="button">暗号化</button>
+            <button class="button">復号化</button>
+          </div>
+          <div class="column is-one-fifth"><input type="password" class="input" placeholder="パスワード"></div>
+        </div>
       </div>
 
       <div class="hidden">
-        <button class="button">Hex</button>
-        <button class="button">Base64</button>
+        <div class="columns">
+          <div class="column is-one-fifth"> <h5 class="title is-5">MD5</h5> <button class="button" id="md5-hex">Hex</button> <button class="button" id="md5-b64">Base64</button> </div>
+          <hr class="hr">
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-1</h5> <button class="button" id="sha1-hex">Hex</button> <button class="button" id="sha1-b64">Base64</button> </div>
+        </div>
+        <hr class="hr">
+        <h4 class="title is-4">SHA-2</h4>
+        <div class="columns">
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-224</h5> <button class="button" id="sha224-hex">Hex</button> <button class="button" id="sha224-b64">Base64</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-256</h5> <button class="button" id="sha256-hex">Hex</button> <button class="button" id="sha256-b64">Base64</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-384</h5> <button class="button" id="sha384-hex">Hex</button> <button class="button" id="sha384-b64">Base64</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-512</h5> <button class="button" id="sha512-hex">Hex</button> <button class="button" id="sha512-b64">Base64</button> </div>
+        </div>
+        <hr class="hr">
+        <h4 class="title is-4">SHA-3</h4>
+        <div class="columns">
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-224</h5> <button class="button" id="sha3-224-hex">Hex</button> <button class="button" id="sha3-224-b64">Base64</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-256</h5> <button class="button" id="sha3-256-hex">Hex</button> <button class="button" id="sha3-256-b64">Base64</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-384</h5> <button class="button" id="sha3-384-hex">Hex</button> <button class="button" id="sha3-384-b64">Base64</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-512</h5> <button class="button" id="sha3-512-hex">Hex</button> <button class="button" id="sha3-512-b64">Base64</button> </div>
+        </div>
       </div>
 
     </div>

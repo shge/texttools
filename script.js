@@ -140,7 +140,39 @@ $('#line-shuffle').on('click', function () {
 
 //////////////////////////// エンコード ////////////////////////////
 
+//////////////////////////// AES ////////////////////////////
 
+//////////////////////////// MD5 / SHA ////////////////////////////
+
+$('#md5-hex').on('click', function () { settxt(CryptoJS.MD5(gettxt())); });
+$('#md5-b64').on('click', function () { settxt(CryptoJS.MD5(gettxt()).toString(CryptoJS.enc.Base64)); });
+
+$('#sha1-hex').on('click', function () { settxt(CryptoJS.SHA1(gettxt())); });
+$('#sha1-b64').on('click', function () { settxt(CryptoJS.SHA1(gettxt()).toString(CryptoJS.enc.Base64)); });
+
+$('#sha224-hex').on('click', function () { settxt(CryptoJS.SHA224(gettxt())); });
+$('#sha224-b64').on('click', function () { settxt(CryptoJS.SHA224(gettxt()).toString(CryptoJS.enc.Base64)); });
+
+$('#sha256-hex').on('click', function () { settxt(CryptoJS.SHA256(gettxt())); });
+$('#sha256-b64').on('click', function () { settxt(CryptoJS.SHA256(gettxt()).toString(CryptoJS.enc.Base64)); });
+
+$('#sha384-hex').on('click', function () { settxt(CryptoJS.SHA384(gettxt())); });
+$('#sha384-b64').on('click', function () { settxt(CryptoJS.SHA384(gettxt()).toString(CryptoJS.enc.Base64)); });
+
+$('#sha512-hex').on('click', function () { settxt(CryptoJS.SHA512(gettxt())); });
+$('#sha512-b64').on('click', function () { settxt(CryptoJS.SHA512(gettxt()).toString(CryptoJS.enc.Base64)); });
+
+$('#sha3-224-hex').on('click', function () { settxt(CryptoJS.SHA3(gettxt(), {outputLength:224})); });
+$('#sha3-224-b64').on('click', function () { settxt(CryptoJS.SHA3(gettxt(), {outputLength:224}).toString(CryptoJS.enc.Base64)); });
+
+$('#sha3-256-hex').on('click', function () { settxt(CryptoJS.SHA3(gettxt(), {outputLength:256})); });
+$('#sha3-256-b64').on('click', function () { settxt(CryptoJS.SHA3(gettxt(), {outputLength:256}).toString(CryptoJS.enc.Base64)); });
+
+$('#sha3-384-hex').on('click', function () { settxt(CryptoJS.SHA3(gettxt(), {outputLength:384})); });
+$('#sha3-384-b64').on('click', function () { settxt(CryptoJS.SHA3(gettxt(), {outputLength:384}).toString(CryptoJS.enc.Base64)); });
+
+$('#sha3-512-hex').on('click', function () { settxt(CryptoJS.SHA3(gettxt())); });
+$('#sha3-512-b64').on('click', function () { settxt(CryptoJS.SHA3(gettxt()).toString(CryptoJS.enc.Base64)); });
 
 
 }); // $
