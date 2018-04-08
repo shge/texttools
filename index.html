@@ -11,7 +11,7 @@
   gtag('config', 'UA-117094943-1');
 </script>
 <title>テキスト操作ツール - TextTools</title>
-<meta name="description" content="文字列置換、空行削除、行並び替え、エンコード、AES暗号化/復号化、MD5/SHAハッシュ値生成、パスワード生成などに対応しているテキスト操作ツールです。">
+<meta name="description" content="文字列置換、空行削除、重複行削除、行並び替え、行シャッフル、Unicode/Punycode/HTML/Base64/Hex/URLエンコード(符号化)・デコード(復号化)、AES暗号化/復号化(パスワード付き)、MD5/SHAハッシュ値生成などに対応しているテキスト操作ツールです。テキストを入力して実行したい操作のボタンを押すだけで変換することができます。">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,9 +54,8 @@
       <ul>
         <li class="is-active"><a><i class="fas fa-fw fa-cogs"></i>テキスト操作</a>
         <li><a><i class="fas fa-fw fa-exchange-alt"></i>エンコード</a>
-        <li><a><i class="fas fa-fw fa-lock"></i>AES</a>
-        <li><a><i class="fas fa-fw fa-hashtag"></i>MD5 / SHA</a>
-        <li><a><i class="fas fa-fw fa-key"></i>パスワード生成</a>
+        <li><a><i class="fas fa-fw fa-lock"></i>AES暗号化</a>
+        <li><a><i class="fas fa-fw fa-hashtag"></i>MD5 / SHAハッシュ生成</a>
       </ul>
     </div>
     <div id="tab-contents">
@@ -174,6 +173,7 @@
     </div>
     <article class="message is-dark" style="margin-top: 3rem">
       <div class="message-body content">
+        <p>上のタブから「<i class="fas fa-fw fa-cogs"></i>テキスト操作」「<i class="fas fa-fw fa-exchange-alt"></i>エンコード」「<i class="fas fa-fw fa-lock"></i>AES暗号化」「<i class="fas fa-fw fa-hashtag"></i>MD5 / SHAハッシュ生成」のいずれかを選択し、実行したい操作のボタンを押してください。
         <p>* ローカル(ご使用の端末)で処理するため、サーバーにデータは<strong>送信されません</strong>。
       </div>
     </article>
