@@ -1,14 +1,14 @@
 $(function() {
 
 // Header
-$('#nav').load('../nav.html?201804062022')
+$('#nav').load('../nav.html?201804062022');
 
 // Change tabs
 $('.tabs li').on('click', function() {
   $('.tabs li').removeClass('is-active');
   $(this).addClass('is-active');
   $('#tab-contents > div').addClass('hidden');
-  $('#tab-contents > div').eq( $('.tabs li').index(this) ).removeClass('hidden')
+  $('#tab-contents > div').eq( $('.tabs li').index(this) ).removeClass('hidden');
 });
 
 var gettxt = function () { return $('#input').val(); },
@@ -72,7 +72,7 @@ String.prototype.fixed_length = function() {
 // テキストのカウントfunction
 var count = function () {
   var val = gettxt();
-  $('#char').text('文字数：' + val.fixed_length());
+  $('#char').text('文字数：' + val.replace(/\n/g, '').fixed_length());
   $('#line').text('行数：' + val.split('\n').length);
 };
 
@@ -81,16 +81,61 @@ $('#input').on('input', function() { count(); });
 
 //////////////////////////// テキスト操作 ////////////////////////////
 
+$('#replace-str').on('click', function () {
+  var before = $('#replace-before').val();
+  var after = $('#replace-after').val();
+  settxt( gettxt().split(before).join(after) );
+});
+
+$('#emptyline-remove').on('click', function () {
+  settxt(gettxt().replace(/^\n/gm, '').replace(/\n$/, ''));
+});
+
+$('#return-remove').on('click', function () {
+  settxt(gettxt().replace(/\n/g, ''));
+});
+
+$('#duplicates-remove').on('click', function () {
+  var a = gettxt().split('\n');
+  var b = a.filter(function (x, i, self) {
+    return self.indexOf(x) === i;
+  });
+  settxt(b.join('\n'));
+});
+
 $('#duplicates-removeall').on('click', function() {
   var a = gettxt().split('\n');
   var b = a.filter(function(x, i, self) {
     var num = 0;
-    for (var i = 0; i < self.length; i++) {
-      if (self[i] == x) { num++; }
+    for (var n = 0; n < self.length; n++) {
+      if (self[n] == x) { num++; }
     }
     return num === 1;
   });
   settxt( (b.join('\n')) );
+});
+
+// 行並べ替え（昇順）
+$('#sort-asc').on('click', function () {
+  settxt(gettxt().split('\n').sort().join('\n'));
+});
+
+// 行並べ替え（降順）
+$('#sort-desc').on('click', function () {
+  settxt(gettxt().split('\n').sort().reverse().join('\n'));
+});
+
+// 行シャッフル
+$('#line-shuffle').on('click', function () {
+  var array = gettxt().split('\n');
+  var n = array.length, t, i;
+  while (n) {
+    i = Math.floor(Math.random() * n--);
+    t = array[n];
+    array[n] = array[i];
+    array[i] = t;
+  }
+  settxt(array.join('\n'));
 });
 
 //////////////////////////// エンコード ////////////////////////////

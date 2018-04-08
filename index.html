@@ -45,32 +45,29 @@
         <li class="is-active"><a><i class="fas fa-fw fa-cogs"></i>テキスト操作</a>
         <li><a><i class="fas fa-fw fa-exchange-alt"></i>エンコード</a>
         <li><a><i class="fas fa-fw fa-lock"></i>AES</a>
-        <li><a><i class="fas fa-fw fa-hashtag"></i>MD5</a>
-        <li><a><i class="fas fa-fw fa-hashtag"></i>SHA-1</a>
-        <li><a><i class="fas fa-fw fa-hashtag"></i>SHA-2</a>
-        <li><a><i class="fas fa-fw fa-hashtag"></i>SHA-3</a>
+        <li><a><i class="fas fa-fw fa-hashtag"></i>MD5 / SHA</a>
       </ul>
     </div>
     <div id="tab-contents">
 
       <div>
         <div class="columns">
-          <div class="column"><button class="button">置換</button></div>
-          <div class="column"><input class="input" placeholder="置換前"></div>
-          <div class="column"><input class="input" placeholder="置換後"></div>
+          <div class="column"><button class="button" id="replace-str">置換</button></div>
+          <div class="column"><input class="input" placeholder="置換前" id="replace-before"></div>
+          <div class="column"><input class="input" placeholder="置換後" id="replace-after"></div>
           <div class="column"></div>
         </div>
         <hr class="hr">
         <div class="columns">
-          <div class="column"><button class="button" id="empty-remove">空行削除</button></div>
-          <div class="column"><button class="button" id="newline-remove">改行削除</button></div>
+          <div class="column"><button class="button" id="emptyline-remove">空行削除</button></div>
+          <div class="column"><button class="button" id="return-remove">改行削除</button></div>
           <div class="column"><button class="button" id="duplicates-remove">重複行削除(1個残す)</button></div>
           <div class="column"><button class="button" id="duplicates-removeall">重複行削除(残さない)</button></div>
         </div>
         <div class="columns">
           <div class="column"><button class="button" id="sort-asc">行並び替え(昇順)</button></div>
           <div class="column"><button class="button" id="sort-desc">行並び替え(降順)</button></div>
-          <div class="column"><button class="button" id="shuffle">行シャッフル</button></div>
+          <div class="column"><button class="button" id="line-shuffle">行シャッフル</button></div>
           <div class="column"><button class="button" id=""></button></div>
         </div>
 
