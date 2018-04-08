@@ -79,6 +79,91 @@ var count = function () {
 // テキストの更新時にカウント
 $('#input').on('input', function() { count(); });
 
+// Unicode(\uXXXXXX)
+var uc_e = function(str) {
+  // var i = 0, len = str.length, points = '';
+  // while (i < len) {
+  //   var x = str.charCodeAt(i++);
+  //   if (0xD800 <= x && x < 0xDC00) {
+  //     var y = str.charCodeAt(i++);
+  //     points += '\\u' + (0x10000 + ((x & 0x3FF) << 10) | (y & 0x3FF));
+  //   } else {
+  //     points += '\\u' + x;
+  //   }
+  // }
+  // return points;
+  var code, pref = {1: '\\u000', 2: '\\u00', 3: '\\u0', 4: '\\u'};
+  return str.replace(/\W/g, function(c) {
+    return pref[(code = c.charCodeAt(0).toString(16)).length] + code;
+  });
+};
+var uc_d = function(str) {
+  // return unescape(str.replace(/\\u([\d\w]+)/gi, function (match, grp) {
+  //   return String.fromCodePoint(parseInt(grp, 10));
+  // }));
+  return str.replace(/\\u([a-fA-F0-9]{4})/g, function(m0, m1) {
+    return String.fromCharCode(parseInt(m1, 16));
+  });
+};
+
+// HTML(&#NNNN;)
+var html_10_e = function(str) {
+  var i = 0, len = str.length, points = '';
+  while (i < len) {
+    var x = str.charCodeAt(i++);
+    if (0xD800 <= x && x < 0xDC00) {
+      var y = str.charCodeAt(i++);
+      points += '&#' + (0x10000 + ((x & 0x3FF) << 10) | (y & 0x3FF)) + ';';
+    } else {
+      points += '&#' + x + ';';
+    }
+  }
+  return points;
+};
+var html_10_d = function(str) {
+  return unescape(str.replace(/&#([\d]{2,7});/g, function (match, grp) {
+    return String.fromCodePoint(parseInt(grp, 10));
+  }));
+};
+
+// HTML(&#xXXXXX;)
+var html_16_e = function(str) {
+  var i = 0, len = str.length, points = '';
+  while (i < len) {
+    var x = str.charCodeAt(i++);
+    if (0xD800 <= x && x < 0xDC00) {
+      var y = str.charCodeAt(i++);
+      points += '&#x' + (0x10000 + ((x & 0x3FF) << 10) | (y & 0x3FF)).toString(16) + ';';
+    } else {
+      points += '&#x' + x.toString(16) + ';';
+    }
+  }
+  return points;
+};
+var html_16_d = function(str) {
+  return unescape(str.replace(/&#x([\w]{1,5});/g, function (match, grp) {
+    return String.fromCodePoint(parseInt(grp, 16));
+  }));
+};
+
+// HTML(&lt;, &gt;, &amp;)
+var html_e = function(str) {
+  return $('<div>').text(str).html();
+};
+var html_d = function(str) {
+  return $('<div>').html(str).text();
+};
+
+
+
+
+
+
+
+
+
+
+
 //////////////////////////// テキスト操作 ////////////////////////////
 
 $('#replace-str').on('click', function () {
@@ -139,6 +224,30 @@ $('#line-shuffle').on('click', function () {
 });
 
 //////////////////////////// エンコード ////////////////////////////
+
+$('#uc-e').on('click', function () { settxt(uc_e(gettxt())); });
+$('#uc-d').on('click', function () { settxt(uc_d(gettxt())); });
+
+$('#puny-e').on('click', function () { settxt('xn--' + punycode.encode(gettxt())); });
+$('#puny-d').on('click', function () { settxt(punycode.decode(gettxt().replace('xn--', ''))); });
+
+$('#html-10-e').on('click', function () { settxt(html_10_e(gettxt())); });
+$('#html-10-d').on('click', function () { settxt(html_10_d(gettxt())); });
+
+$('#html-16-e').on('click', function () { settxt(html_16_e(gettxt())); });
+$('#html-16-d').on('click', function () { settxt(html_16_d(gettxt())); });
+
+$('#b64-e').on('click', function () { settxt(CryptoJS.enc.Utf8.parse(gettxt()).toString(CryptoJS.enc.Base64)); });
+$('#b64-d').on('click', function () { settxt(CryptoJS.enc.Base64.parse(gettxt()).toString(CryptoJS.enc.Utf8)); });
+
+$('#hex-e').on('click', function () { settxt(CryptoJS.enc.Utf8.parse(gettxt()).toString(CryptoJS.enc.Hex)); });
+$('#hex-d').on('click', function () { settxt(CryptoJS.enc.Hex.parse(gettxt()).toString(CryptoJS.enc.Utf8)); });
+
+$('#url-e').on('click', function () { settxt(encodeURIComponent(gettxt())); });
+$('#url-d').on('click', function () { settxt(decodeURIComponent(gettxt())); });
+
+$('#html-e').on('click', function () { settxt(html_e(gettxt())); });
+$('#html-d').on('click', function () { settxt(html_d(gettxt())); });
 
 //////////////////////////// AES ////////////////////////////
 

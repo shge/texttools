@@ -85,7 +85,18 @@
       </div>
 
       <div class="hidden">
-        <button class="button">エンコード</button>
+        <div class="columns">
+          <div class="column is-one-fifth"> <h5 class="title is-5">Unicode (\uXXXX)</h5> <button class="button" id="uc-e">符号化</button> <button class="button" id="uc-d">復号化</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">Punycode (xn--)</h5> <button class="button" id="puny-e">符号化</button> <button class="button" id="puny-d">復号化</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">HTML10進 (&#NNNNN;)</h5> <button class="button" id="html-10-e">符号化</button> <button class="button" id="html-10-d">復号化</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">HTML16進 (&#xXXXX;)</h5> <button class="button" id="html-16-e">符号化</button> <button class="button" id="html-16-d">復号化</button> </div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth"> <h5 class="title is-5">Base64</h5> <button class="button" id="b64-e">符号化</button> <button class="button" id="b64-d">復号化</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">Hex</h5> <button class="button" id="hex-e">符号化</button> <button class="button" id="hex-d">復号化</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">URL (%xx)</h5> <button class="button" id="url-e">符号化</button> <button class="button" id="url-d">復号化</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">HTML (&amp;lt;, &amp;gt;, &amp;amp;)</h5> <button class="button" id="html-e">符号化</button> <button class="button" id="html-d">復号化</button> </div>
+        </div>
       </div>
 
       <div class="hidden">
