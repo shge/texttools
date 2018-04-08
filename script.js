@@ -250,6 +250,8 @@ $('#html-e').on('click', function () { settxt(html_e(gettxt())); });
 $('#html-d').on('click', function () { settxt(html_d(gettxt())); });
 
 //////////////////////////// AES ////////////////////////////
+$('#aes-e').on('click', function () { settxt(CryptoJS.AES.encrypt(gettxt(), getpw())); });
+$('#aes-d').on('click', function () { settxt(CryptoJS.AES.decrypt(gettxt(), getpw()).toString(CryptoJS.enc.Utf8)); });
 
 //////////////////////////// MD5 / SHA ////////////////////////////
 

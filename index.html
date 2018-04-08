@@ -97,31 +97,38 @@
           <div class="column is-one-fifth"> <h5 class="title is-5">URL (%xx)</h5> <button class="button" id="url-e">符号化</button> <button class="button" id="url-d">復号化</button> </div>
           <div class="column is-one-fifth"> <h5 class="title is-5">HTML (&amp;lt;, &amp;gt;, &amp;amp;)</h5> <button class="button" id="html-e">符号化</button> <button class="button" id="html-d">復号化</button> </div>
         </div>
+        <article class="message">
+          <div class="message-body content">
+          </div>
+        </article>
       </div>
 
       <div class="hidden">
         <div class="columns">
           <div class="column is-one-fifth">
-            <button class="button">暗号化</button>
-            <button class="button">復号化</button>
+            <button class="button" id="aes-e">暗号化</button>
+            <button class="button" id="aes-d">復号化</button>
           </div>
-          <div class="column is-one-fifth"><input type="password" class="input" placeholder="パスワード"></div>
+          <div class="column is-one-fifth"><input type="password" class="input" placeholder="パスワード" id="pw"></div>
         </div>
+        <article class="message">
+          <div class="message-body content">
+            <h5 class="title is-5">AES</h5>
+            <p>AES は、Advanced Encryption Standard の略で、データ暗号化方式のひとつ。
+            <p>従来、アメリカでは DES やトリプルDES と呼ばれる暗号化方式が使われていた。しかし、この方法は古くなってきため、アメリカ政府はより強力な暗号化方式を公募した。その結果、選ばれた方式が AES となった。
+            <p>AES は、128/192/256ビットの3種類の鍵を使い、暗号化するための方法（アルゴリズム）も従来のものとはまったく異なる。現在、実用化している方式の中では、<strong>極めて強度が高い</strong>。
+            <p><a href="https://ja.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank">Wikipedia</a>
+          </div>
+        </article>
       </div>
 
       <div class="hidden">
-        <div class="columns">
-          <div class="column is-one-fifth"> <h5 class="title is-5">MD5</h5> <button class="button" id="md5-hex">Hex</button> <button class="button" id="md5-b64">Base64</button> </div>
-          <hr class="hr">
-          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-1</h5> <button class="button" id="sha1-hex">Hex</button> <button class="button" id="sha1-b64">Base64</button> </div>
-        </div>
-        <hr class="hr">
         <h4 class="title is-4">SHA-2</h4>
         <div class="columns">
           <div class="column is-one-fifth"> <h5 class="title is-5">SHA-224</h5> <button class="button" id="sha224-hex">Hex</button> <button class="button" id="sha224-b64">Base64</button> </div>
-          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-256</h5> <button class="button" id="sha256-hex">Hex</button> <button class="button" id="sha256-b64">Base64</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-256 <span class="tag is-info">推奨</span></h5> <button class="button" id="sha256-hex">Hex</button> <button class="button" id="sha256-b64">Base64</button> </div>
           <div class="column is-one-fifth"> <h5 class="title is-5">SHA-384</h5> <button class="button" id="sha384-hex">Hex</button> <button class="button" id="sha384-b64">Base64</button> </div>
-          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-512</h5> <button class="button" id="sha512-hex">Hex</button> <button class="button" id="sha512-b64">Base64</button> </div>
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-512 <span class="tag is-info">推奨</span></h5> <button class="button" id="sha512-hex">Hex</button> <button class="button" id="sha512-b64">Base64</button> </div>
         </div>
         <hr class="hr">
         <h4 class="title is-4">SHA-3</h4>
@@ -131,6 +138,37 @@
           <div class="column is-one-fifth"> <h5 class="title is-5">SHA-384</h5> <button class="button" id="sha3-384-hex">Hex</button> <button class="button" id="sha3-384-b64">Base64</button> </div>
           <div class="column is-one-fifth"> <h5 class="title is-5">SHA-512</h5> <button class="button" id="sha3-512-hex">Hex</button> <button class="button" id="sha3-512-b64">Base64</button> </div>
         </div>
+        <hr class="hr">
+        <div class="columns">
+          <div class="column is-one-fifth"> <h5 class="title is-5">MD5 <span class="tag is-danger">非推奨</span></h5> <button class="button" id="md5-hex">Hex</button> <button class="button" id="md5-b64">Base64</button> </div>
+          <hr class="hr">
+          <div class="column is-one-fifth"> <h5 class="title is-5">SHA-1 <span class="tag is-danger">非推奨</span></h5> <button class="button" id="sha1-hex">Hex</button> <button class="button" id="sha1-b64">Base64</button> </div>
+        </div>
+        <article class="message">
+          <div class="message-body content">
+            <h4 class="title is-4">ハッシュ</h4>
+            <p>同じ入力値からは必ず同じ値が得られる一方、少しでも異なる入力値からはまったく違う値が得られる。不可逆な一方向関数を含むため、ハッシュ値から効率よく入力値を割り出すことはできない。また、入力値がハッシュ値より長い場合、複数の異なる入力値から同じハッシュ値が得られる(ハッシュ値の衝突)が、ある入力値を元に、同じハッシュ値になる別の入力値を効率よく探索することはできない。
+            <p>データの伝送や複製を行なう際に、入力側と出力側でハッシュ値を求め一致すれば、途中で改ざんや欠落などが起こっていないことを確認することができる。また、暗号や認証、デジタル署名などの要素技術として様々な場面で利用されている。
+            <h5 class="title is-5">SHA-2 <span class="tag is-info">推奨</span></h5>
+            <p>SHA-2には、前身のSHA-1から多くの改良が加えられている。それ以前のハッシュ関数は出力が固定長で強度もその長さによって決まる値に固定されていたが、
+              SHA-2はSHA-224、SHA-256、SHA-384、SHA-512、SHA-512/224、SHA-512/256の6つのバリエーションを持ち、ハッシュ長は224、256、384、512ビットのいずれかである。これらを総称して SHA-2 という。
+            <p>SHA-2ハッシュ関数は、TLS/SSL、OpenPGP、SSH、S/MIME、IPsec、Bitcoinといった広く使われているアプリケーションやプロトコルで利用されている。
+              UnixやLinuxのベンダーでは、パスワードの安全なハッシュ法としてSHA-256やSHA-512への移行を始めている。
+            <h5 class="title is-5">SHA-3 <span class="tag is-info">推奨</span></h5>
+            <p>SHA-3は、元はKeccakとして知られた暗号学的ハッシュ関数である。
+              SHAシリーズの代替という目的からSHA-3という名があるが、SHA-2までの方式とは全く異なっているその内部構造的にはSHAシリーズではない。
+            <p>MD5への攻撃成功の確認とSHA-1への攻撃の理論的確立という急速に進んだ在来の関数の危殆化を動機とした、アメリカ国立標準技術研究所(NIST)によるこれらに類似した構造を持たないハッシュ関数を求めたコンペティションによるものである。
+              しかしその後、SHA-2への攻撃法の研究は進んだものの、2017年初頭時点では効率的な（有効な）攻撃法の報告はまだ無いことなどのため、結果としてSHA-2の代替の用意が重要ではなくなるなど、状況が変化している。
+            <hr class="hr">
+            <h5 class="title is-5">MD5 <span class="tag is-danger">非推奨</span></h5>
+            <p>MD5 (Message Digest 5) とは、任意の長さの原文を元に128ビットの値を生成するハッシュ関数(要約関数)の一つ。生成された値はハッシュ値と呼ばれる。
+            <p>1991年に考案されたアルゴリズムで、IETFによってRFC 1321として標準化された。近年では同一のハッシュ値を持つ異なる原文のペアを効率よく探索することなどができるようになり、セキュリティ用途でMD5を使用するのは十分安全とは言えなくなっている。SHA-2などより安全なハッシュ関数を用いることが推奨されている。
+            <h5 class="title is-5">SHA-1 <span class="tag is-danger">非推奨</span></h5>
+            <p>SHA-1は、160ビット（20バイト）のハッシュ値を生成する。
+              以前は、SHA-1はSHAシリーズの中で最も広く用いられていたものであり、多くのアプリケーションやプロトコルに採用されていたが、2017年2月には衝突攻撃（強衝突耐性の突破）の成功が現実に示されている。
+              そのため、情報セキュリティの目的では、もはや絶対に採用してはならない。
+          </div>
+        </article>
       </div>
 
     </div>
