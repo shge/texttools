@@ -1,7 +1,7 @@
 $(function() {
 
 // Header
-$('#nav').load('../nav.html?201804062022');
+$('#nav').load('/nav.html?201804062022');
 
 // Change tabs
 $('.tabs li').on('click', function() {
