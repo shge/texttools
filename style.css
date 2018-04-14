@@ -1,27 +1,3 @@
-nav {
-  filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.6));
-}
-
-/* Fix footer */
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 1rem 1.5rem 1rem;
-  text-align: center;
-}
-html {
-  height: 100%;
-}
-body{
-  min-height: 100%;
-  position: relative
-}
-.section{
-  padding-bottom: 130px;
-}
-
-
 .textarea {
   max-height: none !important;
 }
